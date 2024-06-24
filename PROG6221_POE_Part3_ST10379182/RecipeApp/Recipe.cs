@@ -16,6 +16,8 @@ namespace RecipeApp
             Ingredients = ingredients;
             Steps = steps;
         }
-    }
-
+        public override string ToString()
+        {
+            return Name;
+        }
 // https://learn.microsoft.com/en-us/dotnet/csharp/linq/ //
