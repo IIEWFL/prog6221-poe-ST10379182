@@ -9,7 +9,11 @@ namespace RecipeApp
     {
         private List<Recipe> recipes = new List<Recipe>();
 
-      
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
 
 
 
