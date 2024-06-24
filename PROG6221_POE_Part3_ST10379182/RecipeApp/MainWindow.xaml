@@ -12,5 +12,12 @@
     <Button Name="AddRecipeButton" Width="100" Height="25" Margin="10,260,10,10" Content="Add Recipe" Click="AddRecipeButton_Click" VerticalAlignment="Top"/>
 
     <TextBox Name="FilterTextBox" Width="200" Height="25" Margin="10,290,10,10" VerticalAlignment="Top" GotFocus="RemovePlaceholderText" LostFocus="ShowPlaceholderText" TextChanged="FilterTextBox_TextChanged"/>
+    <TextBlock Text="Filter by Ingredient" Foreground="Purple" IsHitTestVisible="False" Margin="15,300,0,0" VerticalAlignment="Top" />
+
+    <ListBox Name="RecipeListBox" Height="300" Margin="522,10,95,0" VerticalAlignment="Top" SelectionChanged="RecipeListBox_SelectionChanged"/>
+
+    <TextBlock Name="RecipeDetailsTextBlock" Width="400" Height="300" Margin="550,10,10,10" TextWrapping="Wrap"/>
+    </Grid>
+</Window>
 
 
