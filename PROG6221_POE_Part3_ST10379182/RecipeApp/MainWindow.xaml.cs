@@ -38,6 +38,57 @@ namespace RecipeApp
             IngredientsTextBox.Clear();
             StepsTextBox.Clear();
         }
+        private void UpdateRecipeList()
+        {
+            RecipeListBox.ItemsSource = null;
+            RecipeListBox.ItemsSource = recipes.OrderBy(r => r.Name).ToList();
+        }
+
+        private void RecipeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (RecipeListBox.SelectedItem is Recipe selectedRecipe)
+            {
+                RecipeDetailsTextBlock.Text = $"Name: {selectedRecipe.Name}\n\nIngredients:\n- {string.Join("\n- ", selectedRecipe.Ingredients)}\n\nSteps:\n{selectedRecipe.Steps}";
+            }
+        }
+
+        private void FilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string filter = FilterTextBox.Text.ToLower();
+            var filteredRecipes = recipes.Where(r => r.Ingredients.Any(i => i.ToLower().Contains(filter))).OrderBy(r => r.Name).ToList();
+            RecipeListBox.ItemsSource = null;
+            RecipeListBox.ItemsSource = filteredRecipes;
+        }
+
+        private void RemovePlaceholderText(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null && textBox.Text == "Enter Recipe Name" || textBox.Text == "Enter Ingredients (comma-separated)" || textBox.Text == "Enter Steps" || textBox.Text == "Filter by Ingredient")
+            {
+                textBox.Text = "";
+                textBox.Foreground = System.Windows.Media.Brushes.Black;
+            }
+        }
+
+        private void ShowPlaceholderText(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null && string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                if (textBox.Name == "RecipeNameTextBox")
+                    textBox.Text = "Enter Recipe Name";
+                else if (textBox.Name == "IngredientsTextBox")
+                    textBox.Text = "Enter Ingredients (comma-separated)";
+                else if (textBox.Name == "StepsTextBox")
+                    textBox.Text = "Enter Steps";
+                else if (textBox.Name == "FilterTextBox")
+                    textBox.Text = "Filter by Ingredient";
+
+                textBox.Foreground = System.Windows.Media.Brushes.Gray;
+            }
+        }
+    }
+}
 
     }
 
