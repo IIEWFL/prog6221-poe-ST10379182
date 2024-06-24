@@ -11,5 +11,11 @@ namespace RecipeApp
         public string Steps { get; set; }
 
         public Recipe(string name, List<string> ingredients, string steps)
+        {
+            Name = name;
+            Ingredients = ingredients;
+            Steps = steps;
+        }
+    }
 
 // https://learn.microsoft.com/en-us/dotnet/csharp/linq/ //
