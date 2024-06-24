@@ -14,6 +14,32 @@ namespace RecipeApp
             InitializeComponent();
         }
         private void AddRecipeButton_Click(object sender, RoutedEventArgs e)
+        {
+            string name = RecipeNameTextBox.Text;
+            List<string> ingredients = IngredientsTextBox.Text.Split(',').Select(i => i.Trim()).ToList();
+            string steps = StepsTextBox.Text;
+
+            if (!string.IsNullOrEmpty(name) && ingredients.Any() && !string.IsNullOrEmpty(steps))
+            {
+                Recipe newRecipe = new Recipe(name, ingredients, steps);
+                recipes.Add(newRecipe);
+                UpdateRecipeList();
+                ClearForm();
+            }
+            else
+            {
+                MessageBox.Show("Please fill out all fields.");
+            }
+        }
+
+        private void ClearForm()
+        {
+            RecipeNameTextBox.Clear();
+            IngredientsTextBox.Clear();
+            StepsTextBox.Clear();
+        }
+
+    }
 
 
 
