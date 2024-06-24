@@ -9,5 +9,8 @@
     <TextBlock Text="Enter Ingredients (comma-separated)" Foreground="Blue" IsHitTestVisible="False" Margin="15,50,0,0" VerticalAlignment="Top" />
     <TextBox Name="StepsTextBox" Width="200" Height="100" Margin="10,150,10,10" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" GotFocus="RemovePlaceholderText" LostFocus="ShowPlaceholderText"/>
     <TextBlock Text="Enter Steps" Foreground="Green" IsHitTestVisible="False" Margin="15,160,0,0" VerticalAlignment="Top" />
+    <Button Name="AddRecipeButton" Width="100" Height="25" Margin="10,260,10,10" Content="Add Recipe" Click="AddRecipeButton_Click" VerticalAlignment="Top"/>
+
+    <TextBox Name="FilterTextBox" Width="200" Height="25" Margin="10,290,10,10" VerticalAlignment="Top" GotFocus="RemovePlaceholderText" LostFocus="ShowPlaceholderText" TextChanged="FilterTextBox_TextChanged"/>
 
 
